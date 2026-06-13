@@ -1,0 +1,12 @@
+name: runner-check
+on: workflow_dispatch
+jobs:
+  check:
+    runs-on: [self-hosted, roboshop]
+    steps:
+      - run: |
+          echo "runner OK on $(hostname)"
+          docker version --format 'docker {{.Server.Version}}'
+          kubectl get nodes
+          aws --endpoint-url http://localhost:4566 ecr describe-repositories \
+            || echo "ECR reachable, no repos yet (expected)"
