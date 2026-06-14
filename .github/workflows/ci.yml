@@ -11,7 +11,7 @@ on:
 
 jobs:
   ci:
-    runs-on: srinivas-macbook-air
+    runs-on: self-hosted 
     timeout-minutes: 30
     concurrency: ${{ inputs.component }}-ci
     env:
